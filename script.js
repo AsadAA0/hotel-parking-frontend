@@ -3,7 +3,6 @@ document.getElementById("continueBtn").addEventListener("click", function () {
   const lightCars = parseInt(document.getElementById("lightCars").value) || 0;
   const heavyCars = parseInt(document.getElementById("heavyCars").value) || 0;
 
-  // Allowed room numbers
   const allowedRooms = [];
   for (let i = 101; i <= 134; i++) allowedRooms.push(i.toString());
   for (let i = 151; i <= 184; i++) allowedRooms.push(i.toString());
@@ -18,9 +17,12 @@ document.getElementById("continueBtn").addEventListener("click", function () {
   }
 
   const total = lightCars * 5 + heavyCars * 20;
+  const totalCars = lightCars + heavyCars;
 
-  // Update summary
-  if (lightCars === 0 && heavyCars === 0) {
+  const plateInputsContainer = document.getElementById("plateInputsContainer");
+  plateInputsContainer.innerHTML = ""; // Clear any old inputs
+
+  if (totalCars === 0) {
     document.getElementById("summaryText").textContent = `Thank you! You have no cars to register.`;
     document.getElementById("totalText").textContent = `No payment needed.`;
     document.getElementById("payBtn").style.display = "none";
@@ -30,9 +32,35 @@ document.getElementById("continueBtn").addEventListener("click", function () {
     document.getElementById("totalText").textContent =
       `Total parking fee: $${total}`;
     document.getElementById("payBtn").style.display = "block";
+
+    // Create dynamic input fields
+    for (let i = 1; i <= totalCars; i++) {
+      const label = document.createElement("label");
+      label.textContent = `Car ${i} - Plate & State:`;
+
+      const plateInput = document.createElement("input");
+      plateInput.type = "text";
+      plateInput.placeholder = "Plate Number";
+      plateInput.required = true;
+      plateInput.name = `plate${i}`;
+
+      const stateInput = document.createElement("input");
+      stateInput.type = "text";
+      stateInput.placeholder = "State";
+      stateInput.required = true;
+      stateInput.name = `state${i}`;
+
+      plateInputsContainer.appendChild(label);
+      plateInputsContainer.appendChild(document.createElement("br"));
+      plateInputsContainer.appendChild(plateInput);
+      plateInputsContainer.appendChild(document.createElement("br"));
+      plateInputsContainer.appendChild(stateInput);
+      plateInputsContainer.appendChild(document.createElement("br"));
+      plateInputsContainer.appendChild(document.createElement("br"));
+    }
   }
 
-  // Show summary page, hide form
+  // Switch pages
   document.getElementById("formPage").style.display = "none";
   document.getElementById("summaryPage").style.display = "block";
 });

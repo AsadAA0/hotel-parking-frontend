@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hotel Parking</title>
-  <link rel="stylesheet" href="style.css"> <!-- ✅ CSS goes in HEAD -->
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -31,10 +31,13 @@
     <h2>Parking Summary</h2>
     <p id="summaryText"></p>
     <p id="totalText"></p>
+
+    <!-- This is where dynamic plate/state fields will be injected -->
+    <div id="plateInputsContainer"></div>
+
     <button type="button" id="payBtn">Continue to Payment</button>
   </div>
 
-  <!-- ✅ JS goes at bottom of BODY -->
   <script src="script.js"></script>
 </body>
 </html>
