@@ -1,27 +1,40 @@
 <!DOCTYPE html>
-<html lang ="en">
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hotel Parking </title>
-    <link rel="stylesheet" href="style.css">
-    </head>
- 
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hotel Parking</title>
+  <link rel="stylesheet" href="style.css"> <!-- ✅ CSS goes in HEAD -->
+</head>
 
-    <body>
-    <h2> Hotel Parking Form</h2>
+<body>
+
+  <!-- Page 1: Input Form -->
+  <div id="formPage">
+    <h2>Hotel Parking Form</h2>
     <form id="parkingForm">
-        <label for="Room Number">Room Number:</label><br>
-        <input type="text" id="roomNumber" name="roomNumber" required><br><br>
+      <label for="roomNumber">Room Number:</label><br>
+      <input type="text" id="roomNumber" name="roomNumber" required><br><br>
 
-        <label for="lightCars">Number of Light Cars:</label><br>
-<input type="number" id="lightCars" name="lightCars" min="0" value="0"><br><br>
+      <label for="lightCars">Number of Light Cars:</label><br>
+      <input type="number" id="lightCars" name="lightCars" min="0" value="0"><br><br>
 
-<label for="heavyCars">Number of Heavy Cars:</label><br>
-<input type="number" id="heavyCars" name="heavyCars" min="0" value="0"><br><br>
-<button type="submit">Submit</button>
+      <label for="heavyCars">Number of Heavy Cars:</label><br>
+      <input type="number" id="heavyCars" name="heavyCars" min="0" value="0"><br><br>
+
+      <button type="button" id="continueBtn">Continue</button>
     </form>
-   <script src="script.js"></script>
+  </div>
+
+  <!-- Page 2: Summary -->
+  <div id="summaryPage" style="display: none;">
+    <h2>Parking Summary</h2>
+    <p id="summaryText"></p>
+    <p id="totalText"></p>
+    <button type="button" id="payBtn">Continue to Payment</button>
+  </div>
+
+  <!-- ✅ JS goes at bottom of BODY -->
+  <script src="script.js"></script>
 </body>
-    
 </html>
